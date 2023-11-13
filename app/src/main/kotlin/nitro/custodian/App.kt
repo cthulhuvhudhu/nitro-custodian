@@ -16,14 +16,24 @@ fun main() {
     println(grid)
 
     while (!grid.isSolved()) {
-        println("Set/delete mines marks (x and y coordinates)")
+        println("Set/unset mine marks or claim a cell as free:")
         var input = readln().split(" ")
 
-        if (!grid.guess(input[1].toInt()-1, input[0].toInt()-1)) {
-            println("There is a number here!")
-        } else {
-            println(grid)
+        when (input[2]) {
+            "free" -> {
+                if (!grid.stepInIt(input[0].toInt(), input[1].toInt())) {
+                    return grid.endGame(false)
+                } else {
+                    println(grid)
+                }
+            }
+            "mine" -> {
+                if (grid.markMine(input[0].toInt(), input[1].toInt())) {
+                    println(grid)
+                }
+            }
+            else -> println("Invalid command. Expecting 'x y free|mine'")
         }
     }
-    println("Congratulations! You found all the mines!")
+    grid.endGame(true)
 }
