@@ -12,7 +12,18 @@ class App {
 
 fun main() {
     println("How many mines do you want on the field?")
-
     val grid = Grid(readln().toInt())
     println(grid)
+
+    while (!grid.isSolved()) {
+        println("Set/delete mines marks (x and y coordinates)")
+        var input = readln().split(" ")
+
+        if (!grid.guess(input[1].toInt()-1, input[0].toInt()-1)) {
+            println("There is a number here!")
+        } else {
+            println(grid)
+        }
+    }
+    println("Congratulations! You found all the mines!")
 }
