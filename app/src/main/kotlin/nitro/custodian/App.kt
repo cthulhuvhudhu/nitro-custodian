@@ -8,12 +8,11 @@ class App {
         get() {
             return "Hello World!"
         }
-    val grid = Grid(9)
 }
 
 fun main() {
-    println(App().greeting)
+    println("How many mines do you want on the field?")
 
-
-    println(App().grid)
+    val grid = Grid(readln().toInt())
+    println(grid)
 }
