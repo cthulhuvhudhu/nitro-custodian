@@ -5,7 +5,7 @@ import kotlin.random.Random
 class Grid(private val n: Int) {
 
     init {
-        assert(n in 0..SIZE*SIZE) { "Must be fewer nitros than slots" }
+        check(n in 0..SIZE*SIZE) { "Must be fewer nitros than slots" }
         generate()
         populate()
         hints()

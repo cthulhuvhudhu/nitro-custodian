@@ -17,7 +17,7 @@ fun main() {
 
     while (!grid.isSolved()) {
         println("Set/unset mine marks or claim a cell as free:")
-        var input = readln().split(" ")
+        val input = readln().split(" ")
 
         when (input[2]) {
             "free" -> {
