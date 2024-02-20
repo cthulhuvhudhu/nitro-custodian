@@ -21,14 +21,14 @@ fun main() {
 
         when (input[2]) {
             "free" -> {
-                if (!grid.stepInIt(input[0].toInt(), input[1].toInt())) {
+                if (!grid.guess(input[1].toInt(), input[0].toInt())) {
                     return grid.endGame(false)
                 } else {
                     println(grid)
                 }
             }
             "mine" -> {
-                if (grid.markMine(input[0].toInt(), input[1].toInt())) {
+                if (grid.markMine(input[1].toInt(), input[0].toInt())) {
                     println(grid)
                 }
             }

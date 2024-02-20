@@ -1,6 +1,6 @@
 package nitro.custodian
 
-class Cell(val xy: Pair<Int, Int>,
+class Cell(val rc: Pair<Int, Int>,
            var visible: Boolean = false,
            var guessed: Boolean = false,
            var value: Char = Grid.SAFE) {
@@ -9,21 +9,21 @@ class Cell(val xy: Pair<Int, Int>,
        if (value == Grid.BOMB) {
            return guessed
        }
-       return !guessed
+       return visible
     }
 
-    fun makeVisible(): Boolean {
+    fun reveal(): Char {
         visible = true
-        return value != Grid.BOMB
+        return value
     }
 
     override fun toString(): String {
         if (visible) {
-            return value.toString()
+            return "$value"
         }
         if (guessed) {
-            return Grid.GUESS.toString()
+            return "${Grid.GUESS}"
         }
-        return Grid.HIDDEN.toString()
+        return "${Grid.HIDDEN}"
     }
 }
